@@ -68,5 +68,8 @@ dependencies {
     debugImplementation(libs.androidx.ui.test.manifest)
 
     // Modules
-    implementation(project(":devicetypektx"))
+    // implementation(project(":devicetypektx"))
+
+    // Maven
+    implementation("com.github.nisrulz:devicetypektx:1.0.0")
 }
