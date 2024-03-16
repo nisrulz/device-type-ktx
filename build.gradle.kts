@@ -6,6 +6,8 @@ plugins {
 
     // Maven Publishing Plugin
     alias(libs.plugins.mavenPublishing) apply false
+}
+
 //region Publishing Tasks
 tasks.register("publishToMavenLocal") {
     doLast {
