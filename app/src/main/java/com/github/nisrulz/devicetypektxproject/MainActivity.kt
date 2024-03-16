@@ -10,11 +10,28 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import com.github.nisrulz.devicetypektx.isPhone
+import com.github.nisrulz.devicetypektx.isPortraitOrientation
+import com.github.nisrulz.devicetypektx.isTablet
+import com.github.nisrulz.devicetypektx.lockToPortraitOrientation
 import com.github.nisrulz.devicetypektxproject.ui.theme.DeviceTypeKTXProjectTheme
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        
+        lockToPortraitOrientation(phone = true)
+
+        if (isPortraitOrientation()) {
+            println(">> Portrait orientation requested")
+        }
+
+        if (isPhone()) {
+            println(">> Device is a Phone")
+        } else if (isTablet()) {
+            println(">> Device is a Tablet")
+        }
+
         setContent {
             DeviceTypeKTXProjectTheme {
                 // A surface container using the 'background' color from the theme
@@ -28,6 +45,7 @@ class MainActivity : ComponentActivity() {
         }
     }
 }
+
 
 @Composable
 fun Greeting(name: String, modifier: Modifier = Modifier) {
