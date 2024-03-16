@@ -6,4 +6,30 @@ plugins {
 
     // Maven Publishing Plugin
     alias(libs.plugins.mavenPublishing) apply false
+//region Publishing Tasks
+tasks.register("publishToMavenLocal") {
+    doLast {
+        exec {
+            commandLine = listOf(
+                "./gradlew",
+                ":devicetypektx:assembleRelease",
+                ":devicetypektx:publishToMavenLocal",
+                "--no-configuration-cache"
+            )
+        }
+    }
 }
+
+tasks.register("publishToMavenCentral") {
+    doLast {
+        exec {
+            commandLine = listOf(
+                "./gradlew",
+                ":devicetypektx:assembleRelease",
+                ":devicetypektx:publishAllPublicationsToMavenCentral",
+                "--no-configuration-cache"
+            )
+        }
+    }
+}
+//endregion

@@ -2,16 +2,14 @@
 
 ## Publishing
 
-> Run the scripts at the root directory of the project
-
 - To publish to maven local:
 
   ```sh
-  ./publish_local.sh
+  ./gradlew publishToMavenLocal
   ```
 
 - To publish to maven central:
   
   ```sh
-  ./publish_central.sh
+  ./gradlew publishToMavenCentral
   ```
