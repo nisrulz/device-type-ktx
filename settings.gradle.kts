@@ -11,12 +11,17 @@ pluginManagement {
         gradlePluginPortal()
     }
 }
+
+@Suppress("UnstableApiUsage")
 dependencyResolutionManagement {
     repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
     repositories {
-        mavenLocal()
         google()
         mavenCentral()
+
+        // Try mavenLocal only if the dependency cannot
+        // be found on Maven Central
+        mavenLocal()
     }
 }
 
