@@ -1,5 +1,7 @@
 # Device Type KTX
 
+![Banner](img/banner.jpg)
+
 Android library to provide Kotlin extensions for working with specific device types
 
 ## Development
