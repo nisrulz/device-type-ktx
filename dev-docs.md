@@ -2,14 +2,20 @@
 
 ## Publishing
 
-- To publish to maven local:
+- To publish library to maven local:
 
   ```sh
   ./gradlew publishToMavenLocal
   ```
 
-- To publish to maven central:
+- To publish library to maven central:
   
   ```sh
   ./gradlew publishToMavenCentral
+  ```
+  
+- To generate documentation:
+
+  ```sh
+  ./gradlew assembleDocs
   ```

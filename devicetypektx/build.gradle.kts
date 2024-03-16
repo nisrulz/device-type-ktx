@@ -1,9 +1,15 @@
+import org.jetbrains.dokka.DokkaConfiguration
+import org.jetbrains.dokka.gradle.DokkaTask
+
 plugins {
     alias(libs.plugins.androidLibrary)
     alias(libs.plugins.jetbrainsKotlinAndroid)
 
     // Maven Publishing Plugin
     alias(libs.plugins.mavenPublishing)
+
+    // Dokka
+    id("org.jetbrains.dokka")
 }
 
 android {
@@ -43,4 +49,60 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
+
+    // Dokka
+    implementation("org.jetbrains.dokka:android-documentation-plugin:1.9.20")
 }
+
+//region Dokka Configurations
+
+// Configure all single-project Dokka tasks at the same time,
+// such as dokkaHtml, dokkaJavadoc and dokkaGfm.
+tasks.withType<DokkaTask>().configureEach {
+    // Set module name displayed in the final output
+    moduleName.set("Device Type KTX")
+
+    // Suppress obvious functions like default toString or equals. Defaults to true
+    suppressObviousFunctions.set(false)
+
+    // Suppress all inherited members that were not overridden in a given class.
+    // Eg. using it you can suppress toString or equals functions but you can't suppress componentN or copy on data class. To do that use with suppressObviousFunctions
+    // Defaults to false
+    suppressInheritedMembers.set(true)
+
+    dokkaSourceSets.configureEach {
+        // Output directory
+        outputDirectory.set(file("${rootDir}/docs"))
+
+        // Do not create index pages for empty packages
+        skipEmptyPackages.set(true)
+
+        // Used for linking to JDK documentation
+        jdkVersion.set(8)
+
+        documentedVisibilities.set(
+            setOf(
+                DokkaConfiguration.Visibility.PUBLIC,
+                DokkaConfiguration.Visibility.PROTECTED,
+            )
+        )
+
+        perPackageOption {
+            matchingRegex.set(".*internal.*")
+            suppress.set(true)
+        }
+    }
+}
+
+tasks.register<Jar>("dokkaHtmlJar") {
+    dependsOn(tasks.dokkaHtml)
+    from(tasks.dokkaHtml.flatMap { it.outputDirectory })
+    archiveClassifier.set("html-docs")
+}
+
+tasks.register<Jar>("dokkaJavadocJar") {
+    dependsOn(tasks.dokkaJavadoc)
+    from(tasks.dokkaJavadoc.flatMap { it.outputDirectory })
+    archiveClassifier.set("javadoc")
+}
+//endregion

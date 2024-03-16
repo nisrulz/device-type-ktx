@@ -6,6 +6,9 @@ plugins {
 
     // Maven Publishing Plugin
     alias(libs.plugins.mavenPublishing) apply false
+
+    // Dokka
+    id("org.jetbrains.dokka") version "1.9.20" apply false
 }
 
 //region Publishing Tasks
@@ -34,4 +37,19 @@ tasks.register("publishToMavenCentral") {
         }
     }
 }
+//endregion
+
+//region Docs
+
+tasks.register("assembleDocs") {
+    doLast {
+        exec {
+            commandLine = listOf(
+                "./gradlew",
+                ":devicetypektx:dokkaHtml",
+            )
+        }
+    }
+}
+
 //endregion
