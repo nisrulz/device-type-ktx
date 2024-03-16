@@ -2,7 +2,8 @@ plugins {
     alias(libs.plugins.androidLibrary)
     alias(libs.plugins.jetbrainsKotlinAndroid)
 
-    id("com.vanniktech.maven.publish")
+    // Maven Publishing Plugin
+    alias(libs.plugins.mavenPublishing)
 }
 
 android {
