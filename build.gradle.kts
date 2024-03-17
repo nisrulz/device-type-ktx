@@ -45,11 +45,9 @@ tasks.register("assembleDocs") {
     doLast {
         exec {
             commandLine = listOf(
-                "./gradlew",
-                ":devicetypektx:dokkaHtml",
+                "./gradlew", ":devicetypektx:dokkaHtml", "--quiet", "--no-configuration-cache"
             )
         }
     }
 }
-
 //endregion

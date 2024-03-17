@@ -50,11 +50,37 @@ dependencies {
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
 
-    // Dokka
+    //-------- Dokka
+    //- Allows using @hide in code comments
     implementation("org.jetbrains.dokka:android-documentation-plugin:1.9.20")
+    //- Versioning in API docs
+    dokkaHtmlPlugin("org.jetbrains.dokka:versioning-plugin:1.9.20")
 }
 
 //region Dokka Configurations
+
+// Library Version
+val currentVersion = "1.0.0"
+val isOldVersion = false
+val versionOrdering = listOf(currentVersion)
+
+// Dokka output directory
+var dokkaOutputDir = "$rootDir/docs"
+val previousVersionsDirectory =
+    project.rootProject.projectDir.resolve("docs").invariantSeparatorsPath
+val versioningConfiguration = """
+    {
+      "version": "$currentVersion",
+      "versionsOrdering": ${versionOrdering.map { "\"$it\"" }.toTypedArray().contentToString()},
+      "olderVersionsDir": "$previousVersionsDirectory",
+      "renderVersionsNavigationOnAllPages": true
+    }
+    """
+
+if (isOldVersion) {
+    dokkaOutputDir = "$rootDir/docs/$currentVersion"
+}
+
 
 // Configure all single-project Dokka tasks at the same time,
 // such as dokkaHtml, dokkaJavadoc and dokkaGfm.
@@ -71,8 +97,15 @@ tasks.withType<DokkaTask>().configureEach {
     suppressInheritedMembers.set(true)
 
     dokkaSourceSets.configureEach {
-        // Output directory
-        outputDirectory.set(file("${rootDir}/docs"))
+
+        outputDirectory.set(file(dokkaOutputDir))
+
+        pluginsMapConfiguration.set(
+
+            mapOf(
+                "org.jetbrains.dokka.versioning.VersioningPlugin" to versioningConfiguration
+            )
+        )
 
         // Do not create index pages for empty packages
         skipEmptyPackages.set(true)
