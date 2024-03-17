@@ -1,0 +1,26 @@
+$dokka.format:html-v1
+$dokka.linkExtension:html
+$dokka.location:com.github.nisrulz.devicetypektx////PointingToDeclaration/-device -type -k-t-x/com.github.nisrulz.devicetypektx/index.html
+$dokka.location:com.github.nisrulz.devicetypektx//getScreenResolution/android.content.Context#/PointingToDeclaration/-device -type -k-t-x/com.github.nisrulz.devicetypektx/get-screen-resolution.html
+$dokka.location:com.github.nisrulz.devicetypektx//isBluetoothAvailable/android.content.Context#/PointingToDeclaration/-device -type -k-t-x/com.github.nisrulz.devicetypektx/is-bluetooth-available.html
+$dokka.location:com.github.nisrulz.devicetypektx//isCameraAvailable/android.content.Context#/PointingToDeclaration/-device -type -k-t-x/com.github.nisrulz.devicetypektx/is-camera-available.html
+$dokka.location:com.github.nisrulz.devicetypektx//isLandscapeOrientation/android.app.Activity#/PointingToDeclaration/-device -type -k-t-x/com.github.nisrulz.devicetypektx/is-landscape-orientation.html
+$dokka.location:com.github.nisrulz.devicetypektx//isMultiWindowModeActive/android.app.Activity#/PointingToDeclaration/-device -type -k-t-x/com.github.nisrulz.devicetypektx/is-multi-window-mode-active.html
+$dokka.location:com.github.nisrulz.devicetypektx//isNfcAvailable/android.content.Context#/PointingToDeclaration/-device -type -k-t-x/com.github.nisrulz.devicetypektx/is-nfc-available.html
+$dokka.location:com.github.nisrulz.devicetypektx//isPhone/android.content.Context#/PointingToDeclaration/-device -type -k-t-x/com.github.nisrulz.devicetypektx/is-phone.html
+$dokka.location:com.github.nisrulz.devicetypektx//isPortraitOrientation/android.app.Activity#/PointingToDeclaration/-device -type -k-t-x/com.github.nisrulz.devicetypektx/is-portrait-orientation.html
+$dokka.location:com.github.nisrulz.devicetypektx//isTablet/android.content.Context#/PointingToDeclaration/-device -type -k-t-x/com.github.nisrulz.devicetypektx/is-tablet.html
+$dokka.location:com.github.nisrulz.devicetypektx//isTelephonyAvailable/android.content.Context#/PointingToDeclaration/-device -type -k-t-x/com.github.nisrulz.devicetypektx/is-telephony-available.html
+$dokka.location:com.github.nisrulz.devicetypektx//lockToLandscapeOrientation/android.app.Activity#kotlin.Boolean#kotlin.Boolean/PointingToDeclaration/-device -type -k-t-x/com.github.nisrulz.devicetypektx/lock-to-landscape-orientation.html
+$dokka.location:com.github.nisrulz.devicetypektx//lockToOrientation/android.app.Activity#kotlin.Int#kotlin.Boolean#kotlin.Boolean/PointingToDeclaration/-device -type -k-t-x/com.github.nisrulz.devicetypektx/lock-to-orientation.html
+$dokka.location:com.github.nisrulz.devicetypektx//lockToPortraitOrientation/android.app.Activity#kotlin.Boolean#kotlin.Boolean/PointingToDeclaration/-device -type -k-t-x/com.github.nisrulz.devicetypektx/lock-to-portrait-orientation.html
+$dokka.location:com.github.nisrulz.devicetypektx//setOrientation/android.app.Activity#kotlin.Int/PointingToDeclaration/-device -type -k-t-x/com.github.nisrulz.devicetypektx/set-orientation.html
+$dokka.location:com.github.nisrulz.devicetypektx/ScreenResolution///PointingToDeclaration/-device -type -k-t-x/com.github.nisrulz.devicetypektx/-screen-resolution/index.html
+$dokka.location:com.github.nisrulz.devicetypektx/ScreenResolution/ScreenResolution/#kotlin.Int#kotlin.Int/PointingToDeclaration/-device -type -k-t-x/com.github.nisrulz.devicetypektx/-screen-resolution/-screen-resolution.html
+$dokka.location:com.github.nisrulz.devicetypektx/ScreenResolution/component1/#/PointingToDeclaration/-device -type -k-t-x/com.github.nisrulz.devicetypektx/-screen-resolution/component1.html
+$dokka.location:com.github.nisrulz.devicetypektx/ScreenResolution/component2/#/PointingToDeclaration/-device -type -k-t-x/com.github.nisrulz.devicetypektx/-screen-resolution/component2.html
+$dokka.location:com.github.nisrulz.devicetypektx/ScreenResolution/copy/#kotlin.Int#kotlin.Int/PointingToDeclaration/-device -type -k-t-x/com.github.nisrulz.devicetypektx/-screen-resolution/copy.html
+$dokka.location:com.github.nisrulz.devicetypektx/ScreenResolution/height/#/PointingToDeclaration/-device -type -k-t-x/com.github.nisrulz.devicetypektx/-screen-resolution/height.html
+$dokka.location:com.github.nisrulz.devicetypektx/ScreenResolution/width/#/PointingToDeclaration/-device -type -k-t-x/com.github.nisrulz.devicetypektx/-screen-resolution/width.html
+com.github.nisrulz.devicetypektx
+
