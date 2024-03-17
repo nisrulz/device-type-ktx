@@ -6,11 +6,7 @@ Android library to provide Kotlin extensions for working with specific device ty
 
 ## Use
 
-DeviceTypeKTX is published to MavenCentral, so you can add it to your project as a dependency by simply adding the below line to your `build.gradle` file:
-
-```kotlin
-implementation("com.github.nisrulz:devicetypektx:1.0.0")
-```
+[Checkout the usage docs](/usage-docs.md)
 
 ## Development
 
