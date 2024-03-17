@@ -9,7 +9,7 @@ plugins {
     alias(libs.plugins.mavenPublishing)
 
     // Dokka
-    id("org.jetbrains.dokka")
+    alias(libs.plugins.dokka)
 }
 
 android {
@@ -52,9 +52,9 @@ dependencies {
 
     //-------- Dokka
     //- Allows using @hide in code comments
-    implementation("org.jetbrains.dokka:android-documentation-plugin:1.9.20")
+    implementation(libs.dokka.android)
     //- Versioning in API docs
-    dokkaHtmlPlugin("org.jetbrains.dokka:versioning-plugin:1.9.20")
+    dokkaHtmlPlugin(libs.dokka.versioning)
 }
 
 //region Dokka Configurations

@@ -8,7 +8,7 @@ plugins {
     alias(libs.plugins.mavenPublishing) apply false
 
     // Dokka
-    id("org.jetbrains.dokka") version "1.9.20" apply false
+    alias(libs.plugins.dokka) apply false
 }
 
 //region Publishing Tasks
