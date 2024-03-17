@@ -28,7 +28,7 @@ android {
             isMinifyEnabled = false
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
-                "proguard-rules.pro"
+                "proguard-rules.pro",
             )
         }
     }
@@ -42,25 +42,17 @@ android {
 }
 
 dependencies {
-    implementation(libs.androidx.core.ktx)
-    implementation(libs.androidx.appcompat)
-    implementation(libs.material)
-
-    testImplementation(libs.junit)
-    androidTestImplementation(libs.androidx.junit)
-    androidTestImplementation(libs.androidx.espresso.core)
-
-    //-------- Dokka
-    //- Allows using @hide in code comments
-    implementation(libs.dokka.android)
-    //- Versioning in API docs
+    // -------- Dokka
+    // - Allows using @hide in code comments
+    dokkaHtmlPlugin(libs.dokka.android)
+    // - Versioning in API docs
     dokkaHtmlPlugin(libs.dokka.versioning)
 }
 
 //region Dokka Configurations
 
 // Library Version
-val currentVersion = "1.0.0"
+val currentVersion = "1.0.1"
 
 /*
  How to Use
@@ -131,8 +123,8 @@ tasks.withType<DokkaTask>().configureEach {
         // Versioning Plugin
         pluginsMapConfiguration.set(
             mapOf(
-                "org.jetbrains.dokka.versioning.VersioningPlugin" to versioningConfiguration
-            )
+                "org.jetbrains.dokka.versioning.VersioningPlugin" to versioningConfiguration,
+            ),
         )
 
         // Do not create index pages for empty packages
@@ -146,7 +138,7 @@ tasks.withType<DokkaTask>().configureEach {
             setOf(
                 DokkaConfiguration.Visibility.PUBLIC,
                 DokkaConfiguration.Visibility.PROTECTED,
-            )
+            ),
         )
 
         // Exclude internal packages
