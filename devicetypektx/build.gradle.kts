@@ -61,7 +61,38 @@ dependencies {
 
 // Library Version
 val currentVersion = "1.0.0"
+
+/*
+ How to Use
+ __________
+ When generating for the very first version i.e 1.0.0, set isOldVersion = false
+   - Generate the docs by running ./gradlew assembleDocs
+   - You will find the docs generated at the rootDir/docs
+
+ When generating for the subsequent versions i.e 1.0.1, 1.1.0, 2.0.0, etc
+    - First you need to preserve the old version docs, so keep the current version at what it
+     was i.e 1.0.0
+    - Set isOldVersion = true
+    - Generate the docs by running ./gradlew assembleDocs
+    - You will find the docs generated at the rootDir/docs/version i.e rootDir/docs/1.0.0
+    - Now change the current version to 1.0.1
+    - Set isOldVersion = false
+    - Generate the docs by running ./gradlew assembleDocs
+    - You will find the docs generated overwrite the last version with the new version 1.0.1
+       at the rootDir/docs with navigation for the older version 1.0.0 (picked from 1.0.0 dir
+       automatically while maintaining the order as specified in versionOrdering below)
+ */
 val isOldVersion = false
+
+/*
+ * Update this with older versions as new one is ready to be released. This maintains the order of
+ * versions in the drop down. The first item is the one highlighted and selected on opening the
+ * home page.
+ *
+ * Example:
+ * val currentVersion = "1.2.0"
+ * val versionOrdering = listOf(currentVersion, "1.1.0", "1.0.0")
+ */
 val versionOrdering = listOf(currentVersion)
 
 // Dokka output directory
@@ -81,7 +112,6 @@ if (isOldVersion) {
     dokkaOutputDir = "$rootDir/docs/$currentVersion"
 }
 
-
 // Configure all single-project Dokka tasks at the same time,
 // such as dokkaHtml, dokkaJavadoc and dokkaGfm.
 tasks.withType<DokkaTask>().configureEach {
@@ -92,16 +122,14 @@ tasks.withType<DokkaTask>().configureEach {
     suppressObviousFunctions.set(false)
 
     // Suppress all inherited members that were not overridden in a given class.
-    // Eg. using it you can suppress toString or equals functions but you can't suppress componentN or copy on data class. To do that use with suppressObviousFunctions
-    // Defaults to false
     suppressInheritedMembers.set(true)
 
     dokkaSourceSets.configureEach {
-
+        // Output directory
         outputDirectory.set(file(dokkaOutputDir))
 
+        // Versioning Plugin
         pluginsMapConfiguration.set(
-
             mapOf(
                 "org.jetbrains.dokka.versioning.VersioningPlugin" to versioningConfiguration
             )
@@ -113,6 +141,7 @@ tasks.withType<DokkaTask>().configureEach {
         // Used for linking to JDK documentation
         jdkVersion.set(8)
 
+        // Only include public and protected members of the package
         documentedVisibilities.set(
             setOf(
                 DokkaConfiguration.Visibility.PUBLIC,
@@ -120,6 +149,7 @@ tasks.withType<DokkaTask>().configureEach {
             )
         )
 
+        // Exclude internal packages
         perPackageOption {
             matchingRegex.set(".*internal.*")
             suppress.set(true)
