@@ -18,8 +18,7 @@ tasks.register("publishToMavenLocal") {
             commandLine = listOf(
                 "./gradlew",
                 ":devicetypektx:assembleRelease",
-                ":devicetypektx:publishToMavenLocal",
-                "--no-configuration-cache"
+                ":devicetypektx:publishToMavenLocal", "--no-configuration-cache"
             )
         }
     }
@@ -31,8 +30,7 @@ tasks.register("publishToMavenCentral") {
             commandLine = listOf(
                 "./gradlew",
                 ":devicetypektx:assembleRelease",
-                ":devicetypektx:publishAllPublicationsToMavenCentral",
-                "--no-configuration-cache"
+                ":devicetypektx:publishAllPublicationsToMavenCentral", "--no-configuration-cache"
             )
         }
     }
@@ -40,7 +38,6 @@ tasks.register("publishToMavenCentral") {
 //endregion
 
 //region Docs
-
 tasks.register("assembleDocs") {
     doLast {
         exec {
