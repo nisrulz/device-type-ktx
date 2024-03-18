@@ -1,51 +1,13 @@
 plugins {
-    alias(libs.plugins.androidApplication)
-    alias(libs.plugins.jetbrainsKotlinAndroid)
+    id("app-convention")
 }
 
 android {
     namespace = "com.github.nisrulz.devicetypektxproject"
-    compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.github.nisrulz.devicetypektxproject"
-        minSdk = 21
-        targetSdk = 34
-        versionCode = 1
-        versionName = "1.0"
-
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-        vectorDrawables {
-            useSupportLibrary = true
-        }
-    }
-
-    buildTypes {
-        release {
-            isMinifyEnabled = false
-            proguardFiles(
-                getDefaultProguardFile("proguard-android-optimize.txt"),
-                "proguard-rules.pro"
-            )
-        }
-    }
-    compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
-    }
-    kotlinOptions {
-        jvmTarget = "1.8"
-    }
-    buildFeatures {
-        compose = true
-    }
-    composeOptions {
-        kotlinCompilerExtensionVersion = "1.5.10"
-    }
-    packaging {
-        resources {
-            excludes += "/META-INF/{AL2.0,LGPL2.1}"
-        }
+        versionCode = ApplicationInfo.APPLICATION_VERSION_CODE
+        versionName = ApplicationInfo.APPLICATION_VERSION_NAME
     }
 }
 
@@ -71,5 +33,6 @@ dependencies {
     // implementation(project(":devicetypektx"))
 
     // Maven
-    implementation("com.github.nisrulz:devicetypektx:1.0.0")
+    val deviceTypeKtxVer = "1.0.1"
+    implementation("com.github.nisrulz:devicetypektx:$deviceTypeKtxVer")
 }

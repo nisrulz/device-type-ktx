@@ -2,8 +2,7 @@ import org.jetbrains.dokka.DokkaConfiguration
 import org.jetbrains.dokka.gradle.DokkaTask
 
 plugins {
-    alias(libs.plugins.androidLibrary)
-    alias(libs.plugins.jetbrainsKotlinAndroid)
+    id("library-convention")
 
     // Maven Publishing Plugin
     alias(libs.plugins.mavenPublishing)
@@ -14,31 +13,6 @@ plugins {
 
 android {
     namespace = "com.github.nisrulz.devicetypektx"
-    compileSdk = 34
-
-    defaultConfig {
-        minSdk = 21
-
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-        consumerProguardFiles("consumer-rules.pro")
-    }
-
-    buildTypes {
-        release {
-            isMinifyEnabled = false
-            proguardFiles(
-                getDefaultProguardFile("proguard-android-optimize.txt"),
-                "proguard-rules.pro",
-            )
-        }
-    }
-    compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
-    }
-    kotlinOptions {
-        jvmTarget = "1.8"
-    }
 }
 
 dependencies {
@@ -49,10 +23,27 @@ dependencies {
     dokkaHtmlPlugin(libs.dokka.versioning)
 }
 
+// Maven
+mavenPublishing {
+    coordinates(artifactId = LibraryInfo.POM_ARTIFACT_ID, version = LibraryInfo.POM_VERSION)
+
+    pom {
+        name.set(LibraryInfo.POM_NAME)
+        description.set(LibraryInfo.POM_DESCRIPTION)
+        inceptionYear.set(LibraryInfo.POM_INCEPTION_YEAR)
+        url.set(LibraryInfo.POM_URL)
+        scm {
+            url.set(LibraryInfo.POM_SCM_URL)
+            connection.set(LibraryInfo.POM_SCM_CONNECTION)
+            developerConnection.set(LibraryInfo.POM_SCM_DEV_CONNECTION)
+        }
+    }
+}
+
 //region Dokka Configurations
 
 // Library Version
-val currentVersion = "1.0.1"
+val currentVersion = LibraryInfo.POM_VERSION
 
 /*
  How to Use

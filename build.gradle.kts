@@ -12,26 +12,30 @@ plugins {
 }
 
 //region Publishing Tasks
-tasks.register("publishToMavenLocal") {
+tasks.register("releaseToMavenLocal") {
     doLast {
         exec {
-            commandLine = listOf(
-                "./gradlew",
-                ":devicetypektx:assembleRelease",
-                ":devicetypektx:publishToMavenLocal", "--no-configuration-cache"
-            )
+            commandLine =
+                listOf(
+                    "./gradlew",
+                    ":devicetypektx:assembleRelease",
+                    ":devicetypektx:publishToMavenLocal",
+                    "--no-configuration-cache",
+                )
         }
     }
 }
 
-tasks.register("publishToMavenCentral") {
+tasks.register("releaseToMavenCentral") {
     doLast {
         exec {
-            commandLine = listOf(
-                "./gradlew",
-                ":devicetypektx:assembleRelease",
-                ":devicetypektx:publishAllPublicationsToMavenCentral", "--no-configuration-cache"
-            )
+            commandLine =
+                listOf(
+                    "./gradlew",
+                    ":devicetypektx:assembleRelease",
+                    ":devicetypektx:publishToMavenCentral",
+                    "--no-configuration-cache",
+                )
         }
     }
 }
@@ -41,9 +45,13 @@ tasks.register("publishToMavenCentral") {
 tasks.register("assembleDocs") {
     doLast {
         exec {
-            commandLine = listOf(
-                "./gradlew", ":devicetypektx:dokkaHtml", "--quiet", "--no-configuration-cache"
-            )
+            commandLine =
+                listOf(
+                    "./gradlew",
+                    ":devicetypektx:dokkaHtml",
+                    "--quiet",
+                    "--no-configuration-cache",
+                )
         }
     }
 }
