@@ -5,11 +5,11 @@ plugins {
 
 android {
 
-    compileSdk = COMPILE_SDK_VERSION
+    compileSdk = BuildSdkInfo.COMPILE_SDK_VERSION
 
     defaultConfig {
-        minSdk = MIN_SDK_VERSION
-        targetSdk = TARGET_SDK_VERSION
+        minSdk = BuildSdkInfo.MIN_SDK_VERSION
+        targetSdk = BuildSdkInfo.TARGET_SDK_VERSION
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables {
@@ -41,10 +41,10 @@ android {
     }
 
     compileOptions {
-        sourceCompatibility = JAVA_COMPAT_VERSION
-        targetCompatibility = JAVA_COMPAT_VERSION
+        sourceCompatibility = BuildSdkInfo.JAVA_COMPAT_VERSION
+        targetCompatibility = BuildSdkInfo.JAVA_COMPAT_VERSION
     }
     kotlinOptions {
-        jvmTarget = JAVA_COMPAT_VERSION.toString()
+        jvmTarget = BuildSdkInfo.JAVA_COMPAT_VERSION.toString()
     }
 }

@@ -6,8 +6,8 @@ android {
     namespace = "com.github.nisrulz.devicetypektxproject"
 
     defaultConfig {
-        versionCode = APP_VERSION_CODE
-        versionName = APP_VERSION_NAME
+        versionCode = ApplicationInfo.APPLICATION_VERSION_CODE
+        versionName = ApplicationInfo.APPLICATION_VERSION_NAME
     }
 }
 

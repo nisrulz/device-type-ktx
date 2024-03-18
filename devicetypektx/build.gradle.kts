@@ -23,10 +23,27 @@ dependencies {
     dokkaHtmlPlugin(libs.dokka.versioning)
 }
 
+// Maven
+mavenPublishing {
+    coordinates(artifactId = LibraryInfo.POM_ARTIFACT_ID, version = LibraryInfo.POM_VERSION)
+
+    pom {
+        name.set(LibraryInfo.POM_NAME)
+        description.set(LibraryInfo.POM_DESCRIPTION)
+        inceptionYear.set(LibraryInfo.POM_INCEPTION_YEAR)
+        url.set(LibraryInfo.POM_URL)
+        scm {
+            url.set(LibraryInfo.POM_SCM_URL)
+            connection.set(LibraryInfo.POM_SCM_CONNECTION)
+            developerConnection.set(LibraryInfo.POM_SCM_DEV_CONNECTION)
+        }
+    }
+}
+
 //region Dokka Configurations
 
 // Library Version
-val currentVersion = "1.0.1"
+val currentVersion = LibraryInfo.POM_VERSION
 
 /*
  How to Use
