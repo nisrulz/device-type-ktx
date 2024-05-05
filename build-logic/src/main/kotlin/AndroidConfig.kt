@@ -1,10 +1,11 @@
-import org.gradle.api.JavaVersion
-
 internal object BuildSdkInfo {
     const val COMPILE_SDK_VERSION = 34
     const val MIN_SDK_VERSION = 21
     const val TARGET_SDK_VERSION = 34
-    val JAVA_COMPAT_VERSION = JavaVersion.VERSION_1_8
+    const val JVM_TARGET = 8
+
+    // https://developer.android.com/jetpack/androidx/releases/compose-kotlin#pre-release_kotlin_compatibility
+    const val COMPOSE_COMPILER_VERSION = "1.5.13"
 }
 
 object ApplicationInfo {

@@ -31,7 +31,7 @@ android {
         compose = true
     }
     composeOptions {
-        kotlinCompilerExtensionVersion = "1.5.10"
+        kotlinCompilerExtensionVersion = BuildSdkInfo.COMPOSE_COMPILER_VERSION
     }
 
     packaging {
@@ -40,11 +40,10 @@ android {
         }
     }
 
-    compileOptions {
-        sourceCompatibility = BuildSdkInfo.JAVA_COMPAT_VERSION
-        targetCompatibility = BuildSdkInfo.JAVA_COMPAT_VERSION
-    }
-    kotlinOptions {
-        jvmTarget = BuildSdkInfo.JAVA_COMPAT_VERSION.toString()
+    // https://kotlinlang.org/docs/gradle-configure-project.html#gradle-java-toolchains-support
+    // Note: Setting a toolchain via the kotlin extension updates the toolchain for Java compile
+    // tasks as well.
+    kotlin {
+        jvmToolchain(BuildSdkInfo.JVM_TARGET)
     }
 }

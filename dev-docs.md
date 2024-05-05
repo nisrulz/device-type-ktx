@@ -20,5 +20,5 @@
   ```sh
   ./gradlew assembleDocs
   ```
-  > Docs are automatically published from the Github repo, via GH Pages building from `docs` dir
-  from `master` branch.
+  > [API Docs](http://nisrulz.com/device-type-ktx/) are automatically published from the Github
+  repo, via GH Pages building from `docs` dir from `master` branch.
