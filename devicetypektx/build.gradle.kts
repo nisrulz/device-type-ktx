@@ -12,7 +12,7 @@ plugins {
 }
 
 android {
-    namespace = "com.github.nisrulz.devicetypektx"
+    namespace = "com.github.nisrulz." + LibraryInfo.POM_ARTIFACT_ID
 }
 
 dependencies {
@@ -99,7 +99,7 @@ if (isOldVersion) {
 // such as dokkaHtml, dokkaJavadoc and dokkaGfm.
 tasks.withType<DokkaTask>().configureEach {
     // Set module name displayed in the final output
-    moduleName.set("Device Type KTX")
+    moduleName.set(LibraryInfo.POM_NAME)
 
     // Suppress obvious functions like default toString or equals. Defaults to true
     suppressObviousFunctions.set(false)
