@@ -1,0 +1,23 @@
+name: "Validate Gradle Wrapper"
+
+on:
+  # Allows to run this workflow when a commit it pushed to the branch
+  push:
+    paths-ignore:
+      - "**/*.md"
+    branches:
+      - master
+  # Allows to run this workflow when a Pull Request is made with the set target branch
+  pull_request:
+    paths-ignore:
+      - "**/*.md"
+    branches:
+      - master
+
+jobs:
+  validation:
+    name: "Validation"
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: gradle/wrapper-validation-action@v3
