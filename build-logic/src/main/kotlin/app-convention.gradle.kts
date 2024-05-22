@@ -27,13 +27,6 @@ android {
         }
     }
 
-    buildFeatures {
-        compose = true
-    }
-    composeOptions {
-        kotlinCompilerExtensionVersion = BuildSdkInfo.COMPOSE_COMPILER_VERSION
-    }
-
     packaging {
         resources {
             excludes += "/META-INF/{AL2.0,LGPL2.1}"

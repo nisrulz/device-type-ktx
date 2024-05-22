@@ -1,5 +1,8 @@
 plugins {
     id("app-convention")
+
+    // Compose
+    alias(libs.plugins.compose.compiler)
 }
 
 android {
@@ -8,6 +11,17 @@ android {
     defaultConfig {
         versionCode = ApplicationInfo.APPLICATION_VERSION_CODE
         versionName = ApplicationInfo.APPLICATION_VERSION_NAME
+    }
+
+    buildFeatures {
+        compose = true
+    }
+    composeOptions {
+        kotlinCompilerExtensionVersion = BuildSdkInfo.COMPOSE_COMPILER_VERSION
+    }
+
+    composeCompiler {
+        enableStrongSkippingMode = true
     }
 }
 
