@@ -16,9 +16,6 @@ android {
     buildFeatures {
         compose = true
     }
-    composeOptions {
-        kotlinCompilerExtensionVersion = BuildSdkInfo.COMPOSE_COMPILER_VERSION
-    }
 
     composeCompiler {
         enableStrongSkippingMode = true

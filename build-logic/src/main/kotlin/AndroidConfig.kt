@@ -3,9 +3,6 @@ object BuildSdkInfo {
     const val MIN_SDK_VERSION = 21
     const val TARGET_SDK_VERSION = 34
     const val JVM_TARGET = 8
-
-    // https://developer.android.com/jetpack/androidx/releases/compose-kotlin#pre-release_kotlin_compatibility
-    const val COMPOSE_COMPILER_VERSION = "1.5.13"
 }
 
 object ApplicationInfo {
