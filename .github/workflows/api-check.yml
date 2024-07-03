@@ -1,4 +1,4 @@
-name: "Pre Merge Checks"
+name: "API Compatibility Checks"
 
 on:
   # Allows to run this workflow when a commit it pushed to the branch
@@ -53,9 +53,6 @@ jobs:
 
       - name: Change wrapper permissions
         run: chmod +x ./gradlew
-
-      - name: Run lint
-        run: ./gradlew lintRelease
-
-      - name: Run unit tests
-        run: ./gradlew testReleaseUnitTest
+      
+      - name: API Compatibility Check
+        run: ./gradlew apiCheck
