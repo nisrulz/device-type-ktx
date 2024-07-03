@@ -1,0 +1,49 @@
+public final class com/github/nisrulz/devicetypektx/ConnectivityKt {
+	public static final fun isBluetoothAvailable (Landroid/content/Context;)Z
+	public static final fun isNfcAvailable (Landroid/content/Context;)Z
+	public static final fun isTelephonyAvailable (Landroid/content/Context;)Z
+}
+
+public final class com/github/nisrulz/devicetypektx/DeviceOrientationKt {
+	public static final fun isLandscapeOrientation (Landroid/app/Activity;)Z
+	public static final fun isPortraitOrientation (Landroid/app/Activity;)Z
+}
+
+public final class com/github/nisrulz/devicetypektx/DeviceTypeKt {
+	public static final fun isPhone (Landroid/content/Context;)Z
+	public static final fun isTablet (Landroid/content/Context;)Z
+}
+
+public final class com/github/nisrulz/devicetypektx/DisplayKt {
+	public static final fun getScreenResolution (Landroid/content/Context;)Lcom/github/nisrulz/devicetypektx/ScreenResolution;
+}
+
+public final class com/github/nisrulz/devicetypektx/LockOrientationKt {
+	public static final fun lockToLandscapeOrientation (Landroid/app/Activity;ZZ)V
+	public static synthetic fun lockToLandscapeOrientation$default (Landroid/app/Activity;ZZILjava/lang/Object;)V
+	public static final fun lockToOrientation (Landroid/app/Activity;IZZ)V
+	public static synthetic fun lockToOrientation$default (Landroid/app/Activity;IZZILjava/lang/Object;)V
+	public static final fun lockToPortraitOrientation (Landroid/app/Activity;ZZ)V
+	public static synthetic fun lockToPortraitOrientation$default (Landroid/app/Activity;ZZILjava/lang/Object;)V
+	public static final fun setOrientation (Landroid/app/Activity;I)V
+	public static synthetic fun setOrientation$default (Landroid/app/Activity;IILjava/lang/Object;)V
+}
+
+public final class com/github/nisrulz/devicetypektx/MiscKt {
+	public static final fun isCameraAvailable (Landroid/content/Context;)Z
+	public static final fun isMultiWindowModeActive (Landroid/app/Activity;)Z
+}
+
+public final class com/github/nisrulz/devicetypektx/ScreenResolution {
+	public fun <init> (II)V
+	public final fun component1 ()I
+	public final fun component2 ()I
+	public final fun copy (II)Lcom/github/nisrulz/devicetypektx/ScreenResolution;
+	public static synthetic fun copy$default (Lcom/github/nisrulz/devicetypektx/ScreenResolution;IIILjava/lang/Object;)Lcom/github/nisrulz/devicetypektx/ScreenResolution;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getHeight ()I
+	public final fun getWidth ()I
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
