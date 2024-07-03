@@ -1,13 +1,16 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 plugins {
-    alias(libs.plugins.androidApplication) apply false
-    alias(libs.plugins.org.jetbrains.kotlin.android) apply false
-    alias(libs.plugins.androidLibrary) apply false
+    // Android
+    alias(libs.plugins.android.application) apply false
+    alias(libs.plugins.android.library) apply false
 
-    // Maven Publishing Plugin
-    alias(libs.plugins.mavenPublishing) apply false
+    // Kotlin
+    alias(libs.plugins.kotlin.android) apply false
 
-    // Dokka
+    // Maven Publishing
+    alias(libs.plugins.maven.publish) apply false
+
+    // Dokka for Documentation
     alias(libs.plugins.dokka) apply false
 
     // Compose
@@ -16,13 +19,14 @@ plugins {
 
 //region Publishing Tasks
 tasks.register("releaseToMavenLocal") {
+    val moduleName = "devicetypektx"
     doLast {
         exec {
             commandLine =
                 listOf(
                     "./gradlew",
-                    ":devicetypektx:assembleRelease",
-                    ":devicetypektx:publishToMavenLocal",
+                    ":$moduleName:assembleRelease",
+                    ":$moduleName:publishToMavenLocal",
                     "--no-configuration-cache",
                 )
         }
@@ -30,13 +34,14 @@ tasks.register("releaseToMavenLocal") {
 }
 
 tasks.register("releaseToMavenCentral") {
+    val moduleName = "devicetypektx"
     doLast {
         exec {
             commandLine =
                 listOf(
                     "./gradlew",
-                    ":devicetypektx:assembleRelease",
-                    ":devicetypektx:publishToMavenCentral",
+                    ":$moduleName:assembleRelease",
+                    ":$moduleName:publishToMavenCentral",
                     "--no-configuration-cache",
                 )
         }
@@ -46,13 +51,13 @@ tasks.register("releaseToMavenCentral") {
 
 //region Docs
 tasks.register("assembleDocs") {
+    val moduleName = "devicetypektx"
     doLast {
         exec {
             commandLine =
                 listOf(
                     "./gradlew",
-                    ":devicetypektx:dokkaHtml",
-                    "--quiet",
+                    ":$moduleName:dokkaHtml",
                     "--no-configuration-cache",
                 )
         }

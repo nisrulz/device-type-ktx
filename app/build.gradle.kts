@@ -1,18 +1,11 @@
 plugins {
-    id("app-convention")
+    alias(libs.plugins.devicetypektxproject.android.application)
 
     // Compose
     alias(libs.plugins.compose.compiler)
 }
 
 android {
-    namespace = "com.github.nisrulz.devicetypektxproject"
-
-    defaultConfig {
-        versionCode = ApplicationInfo.APPLICATION_VERSION_CODE
-        versionName = ApplicationInfo.APPLICATION_VERSION_NAME
-    }
-
     buildFeatures {
         compose = true
     }
@@ -26,6 +19,8 @@ dependencies {
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
+
+    // Compose
     implementation(libs.androidx.activity.compose)
     implementation(platform(libs.androidx.compose.bom))
     implementation(libs.androidx.ui)
@@ -41,9 +36,9 @@ dependencies {
     debugImplementation(libs.androidx.ui.test.manifest)
 
     // Modules
-    // implementation(project(":devicetypektx"))
+    implementation(project(":devicetypektx"))
 
     // Maven
-    val deviceTypeKtxVer = "1.0.1"
-    implementation("com.github.nisrulz:devicetypektx:$deviceTypeKtxVer")
+    // val deviceTypeKtxVer = "1.0.1"
+    // implementation("com.github.nisrulz:devicetypektx:$deviceTypeKtxVer")
 }

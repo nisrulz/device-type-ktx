@@ -1,7 +1,15 @@
 [versions]
-agp = "8.5.0"
-kotlin = "2.0.0"
 
+#region ---- Kotlin version dependent
+# https://github.com/JetBrains/kotlin/releases
+kotlin = "2.0.0"
+# https://github.com/google/ksp/releases
+ksp = "2.0.0-1.0.22"
+#endregion
+
+#region ---- Android Core
+agp = "8.5.0"
+androidTools = "31.5.0"
 coreKtx = "1.13.1"
 junit = "4.13.2"
 junitVersion = "1.2.1"
@@ -18,8 +26,12 @@ dokka = "1.9.20"
 [libraries]
 
 # build-logic
-gradle = { module = "com.android.tools.build:gradle", version.ref = "agp" }
+android-gradle-plugin = { module = "com.android.tools.build:gradle", version.ref = "agp" }
+android-tools-common = { module = "com.android.tools:common", version.ref = "androidTools" }
+compose-gradle-plugin = { module = "org.jetbrains.kotlin:compose-compiler-gradle-plugin", version.ref = "kotlin" }
 kotlin-gradle-plugin = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin" }
+symbol-processing-gradle-plugin = { module = "com.google.devtools.ksp:symbol-processing-gradle-plugin", version.ref = "ksp" }
+dokka-plugin = { module = "org.jetbrains.dokka:dokka-android-gradle-plugin", version.ref = "dokka" }
 #----- end
 
 
@@ -45,10 +57,14 @@ dokka-android = { group = "org.jetbrains.dokka", name = "android-documentation-p
 dokka-versioning = { group = "org.jetbrains.dokka", name = "versioning-plugin", version.ref = "dokka" }
 
 [plugins]
-org-jetbrains-kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+android-application = { id = "com.android.application", version.ref = "agp" }
+android-library = { id = "com.android.library", version.ref = "agp" }
 compose-compiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
 
-androidApplication = { id = "com.android.application", version.ref = "agp" }
-androidLibrary = { id = "com.android.library", version.ref = "agp" }
-mavenPublishing = { id = "com.vanniktech.maven.publish", version.ref = "mavenPublish" }
+maven-publish = { id = "com.vanniktech.maven.publish", version.ref = "mavenPublish" }
 dokka = { id = "org.jetbrains.dokka", version.ref = "dokka" }
+
+# Plugins defined by this project
+devicetypektxproject-android-application = { id = "devicetypektxproject.android.application", version = "unspecified" }
+devicetypektxproject-android-library = { id = "devicetypektxproject.android.library", version = "unspecified" }

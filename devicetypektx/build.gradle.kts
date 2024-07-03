@@ -1,13 +1,11 @@
+import com.github.nisrulz.devicetypektxproject.info.LibraryInfo
 import org.jetbrains.dokka.DokkaConfiguration
 import org.jetbrains.dokka.gradle.DokkaTask
 
 plugins {
-    id("library-convention")
+    alias(libs.plugins.devicetypektxproject.android.library)
 
-    // Maven Publishing Plugin
-    alias(libs.plugins.mavenPublishing)
-
-    // Dokka
+    alias(libs.plugins.maven.publish)
     alias(libs.plugins.dokka)
 }
 
@@ -15,15 +13,7 @@ android {
     namespace = "com.github.nisrulz." + LibraryInfo.POM_ARTIFACT_ID
 }
 
-dependencies {
-    // -------- Dokka
-    // - Allows using @hide in code comments
-    dokkaHtmlPlugin(libs.dokka.android)
-    // - Versioning in API docs
-    dokkaHtmlPlugin(libs.dokka.versioning)
-}
-
-// Maven
+//region Maven Publishing
 mavenPublishing {
     coordinates(artifactId = LibraryInfo.POM_ARTIFACT_ID, version = LibraryInfo.POM_VERSION)
 
@@ -40,7 +30,17 @@ mavenPublishing {
     }
 }
 
+//endregion
+
 //region Dokka Configurations
+
+dependencies {
+    // -------- Dokka
+    // - Allows using @hide in code comments
+    dokkaHtmlPlugin(libs.dokka.android)
+    // - Versioning in API docs
+    dokkaHtmlPlugin(libs.dokka.versioning)
+}
 
 // Library Version
 val currentVersion = LibraryInfo.POM_VERSION
@@ -81,7 +81,9 @@ val versionOrdering = listOf(currentVersion)
 // Dokka output directory
 var dokkaOutputDir = "$rootDir/docs"
 val previousVersionsDirectory =
-    project.rootProject.projectDir.resolve("docs").invariantSeparatorsPath
+    project.rootProject.projectDir
+        .resolve("docs")
+        .invariantSeparatorsPath
 val versioningConfiguration = """
     {
       "version": "$currentVersion",
@@ -139,4 +141,5 @@ tasks.withType<DokkaTask>().configureEach {
         }
     }
 }
+
 //endregion

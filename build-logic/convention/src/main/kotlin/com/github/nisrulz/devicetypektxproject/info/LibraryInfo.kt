@@ -1,14 +1,4 @@
-object BuildSdkInfo {
-    const val COMPILE_SDK_VERSION = 34
-    const val MIN_SDK_VERSION = 21
-    const val TARGET_SDK_VERSION = 34
-    const val JVM_TARGET = 17
-}
-
-object ApplicationInfo {
-    const val APPLICATION_VERSION_NAME = "1.0"
-    const val APPLICATION_VERSION_CODE = 1
-}
+package com.github.nisrulz.devicetypektxproject.info
 
 object LibraryInfo {
     const val POM_VERSION = "1.0.2"
