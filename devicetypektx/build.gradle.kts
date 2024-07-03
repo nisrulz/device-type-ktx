@@ -6,7 +6,10 @@ plugins {
     alias(libs.plugins.devicetypektxproject.android.library)
 
     alias(libs.plugins.maven.publish)
+
     alias(libs.plugins.dokka)
+
+    alias(libs.plugins.binary.compatibility.validator)
 }
 
 android {
