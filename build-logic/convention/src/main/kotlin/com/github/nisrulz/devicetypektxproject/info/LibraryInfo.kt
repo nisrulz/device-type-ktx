@@ -9,8 +9,9 @@ object LibraryInfo {
     const val POM_INCEPTION_YEAR = "2024"
 
     private const val GITHUB_REPO_NAME = "device-type-ktx"
-    const val POM_URL = "https://github.com/nisrulz/$GITHUB_REPO_NAME/"
-    const val POM_SCM_URL = "https://github.com/nisrulz/$GITHUB_REPO_NAME/"
-    const val POM_SCM_CONNECTION = "scm:git:git://github.com/nisrulz/$GITHUB_REPO_NAME.git"
-    const val POM_SCM_DEV_CONNECTION = "scm:git:ssh://git@github.com/nisrulz/$GITHUB_REPO_NAME.git"
+    private const val GITHUB_USER = "github.com/nisrulz"
+    const val POM_URL = "https://$GITHUB_USER/$GITHUB_REPO_NAME/"
+    const val POM_SCM_URL = "https://$GITHUB_USER/$GITHUB_REPO_NAME/"
+    const val POM_SCM_CONNECTION = "scm:git:git://$GITHUB_USER/$GITHUB_REPO_NAME.git"
+    const val POM_SCM_DEV_CONNECTION = "scm:git:ssh://git@$GITHUB_USER/$GITHUB_REPO_NAME.git"
 }
