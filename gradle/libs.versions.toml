@@ -24,7 +24,7 @@ material = "1.12.0"
 #region ---- Library/API
 mavenPublish = "0.29.0"
 dokka = "1.9.20"
-binaryCompatValidator = "0.16.2"
+binaryCompatValidator = "0.16.3"
 #endregion
 
 [libraries]
