@@ -1,45 +1,41 @@
+import com.github.nisrulz.devicetypektxproject.info.LibraryInfo
 import org.jetbrains.dokka.DokkaConfiguration
 import org.jetbrains.dokka.gradle.DokkaTask
 
 plugins {
-    alias(libs.plugins.androidLibrary)
-    alias(libs.plugins.jetbrainsKotlinAndroid)
+    alias(libs.plugins.devicetypektxproject.android.library)
 
-    // Maven Publishing Plugin
-    alias(libs.plugins.mavenPublishing)
+    alias(libs.plugins.maven.publish)
 
-    // Dokka
     alias(libs.plugins.dokka)
+
+    alias(libs.plugins.binary.compatibility.validator)
 }
 
 android {
-    namespace = "com.github.nisrulz.devicetypektx"
-    compileSdk = 34
+    namespace = "com.github.nisrulz." + LibraryInfo.POM_ARTIFACT_ID
+}
 
-    defaultConfig {
-        minSdk = 21
+//region Maven Publishing
+mavenPublishing {
+    coordinates(artifactId = LibraryInfo.POM_ARTIFACT_ID, version = LibraryInfo.POM_VERSION)
 
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-        consumerProguardFiles("consumer-rules.pro")
-    }
-
-    buildTypes {
-        release {
-            isMinifyEnabled = false
-            proguardFiles(
-                getDefaultProguardFile("proguard-android-optimize.txt"),
-                "proguard-rules.pro",
-            )
+    pom {
+        name.set(LibraryInfo.POM_NAME)
+        description.set(LibraryInfo.POM_DESCRIPTION)
+        inceptionYear.set(LibraryInfo.POM_INCEPTION_YEAR)
+        url.set(LibraryInfo.POM_URL)
+        scm {
+            url.set(LibraryInfo.POM_SCM_URL)
+            connection.set(LibraryInfo.POM_SCM_CONNECTION)
+            developerConnection.set(LibraryInfo.POM_SCM_DEV_CONNECTION)
         }
     }
-    compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
-    }
-    kotlinOptions {
-        jvmTarget = "1.8"
-    }
 }
+
+//endregion
+
+//region Dokka Configurations
 
 dependencies {
     // -------- Dokka
@@ -49,10 +45,8 @@ dependencies {
     dokkaHtmlPlugin(libs.dokka.versioning)
 }
 
-//region Dokka Configurations
-
 // Library Version
-val currentVersion = "1.0.1"
+val currentVersion = LibraryInfo.POM_VERSION
 
 /*
  How to Use
@@ -90,7 +84,9 @@ val versionOrdering = listOf(currentVersion)
 // Dokka output directory
 var dokkaOutputDir = "$rootDir/docs"
 val previousVersionsDirectory =
-    project.rootProject.projectDir.resolve("docs").invariantSeparatorsPath
+    project.rootProject.projectDir
+        .resolve("docs")
+        .invariantSeparatorsPath
 val versioningConfiguration = """
     {
       "version": "$currentVersion",
@@ -108,7 +104,7 @@ if (isOldVersion) {
 // such as dokkaHtml, dokkaJavadoc and dokkaGfm.
 tasks.withType<DokkaTask>().configureEach {
     // Set module name displayed in the final output
-    moduleName.set("Device Type KTX")
+    moduleName.set(LibraryInfo.POM_NAME)
 
     // Suppress obvious functions like default toString or equals. Defaults to true
     suppressObviousFunctions.set(false)
@@ -148,4 +144,5 @@ tasks.withType<DokkaTask>().configureEach {
         }
     }
 }
+
 //endregion

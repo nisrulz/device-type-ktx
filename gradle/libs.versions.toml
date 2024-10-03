@@ -1,20 +1,44 @@
 [versions]
-agp = "8.3.0"
-kotlin = "1.9.22"
-coreKtx = "1.12.0"
-junit = "4.13.2"
-junitVersion = "1.1.5"
-espressoCore = "3.5.1"
-lifecycleRuntimeKtx = "2.7.0"
-activityCompose = "1.8.2"
-composeBom = "2024.02.02"
-appcompat = "1.6.1"
-material = "1.11.0"
 
-mavenPublish = "0.28.0"
+#region ---- Kotlin version dependent
+# https://github.com/JetBrains/kotlin/releases
+kotlin = "2.0.20"
+# https://github.com/google/ksp/releases
+ksp = "2.0.20-1.0.25"
+#endregion
+
+#region ---- Android Core
+agp = "8.7.0"
+androidTools = "31.7.0"
+coreKtx = "1.13.1"
+junit = "4.13.2"
+junitVersion = "1.2.1"
+espressoCore = "3.6.1"
+lifecycleRuntimeKtx = "2.8.6"
+activityCompose = "1.9.2"
+composeBom = "2024.09.03"
+appcompat = "1.7.0"
+material = "1.12.0"
+#endregion
+
+#region ---- Library/API
+mavenPublish = "0.29.0"
 dokka = "1.9.20"
+binaryCompatValidator = "0.16.3"
+#endregion
 
 [libraries]
+
+# build-logic
+android-gradle-plugin = { module = "com.android.tools.build:gradle", version.ref = "agp" }
+android-tools-common = { module = "com.android.tools:common", version.ref = "androidTools" }
+compose-gradle-plugin = { module = "org.jetbrains.kotlin:compose-compiler-gradle-plugin", version.ref = "kotlin" }
+kotlin-gradle-plugin = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin" }
+symbol-processing-gradle-plugin = { module = "com.google.devtools.ksp:symbol-processing-gradle-plugin", version.ref = "ksp" }
+dokka-plugin = { module = "org.jetbrains.dokka:dokka-android-gradle-plugin", version.ref = "dokka" }
+#----- end
+
+
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
@@ -33,13 +57,20 @@ androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version
 material = { group = "com.google.android.material", name = "material", version.ref = "material" }
 
 # Dokka Plugins
-dokka-android = { group = "org.jetbrains.dokka", name="android-documentation-plugin", version.ref = "dokka" }
-dokka-versioning = { group = "org.jetbrains.dokka", name="versioning-plugin", version.ref = "dokka" }
+dokka-android = { group = "org.jetbrains.dokka", name = "android-documentation-plugin", version.ref = "dokka" }
+dokka-versioning = { group = "org.jetbrains.dokka", name = "versioning-plugin", version.ref = "dokka" }
 
 [plugins]
-androidApplication = { id = "com.android.application", version.ref = "agp" }
-jetbrainsKotlinAndroid = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
-androidLibrary = { id = "com.android.library", version.ref = "agp" }
-mavenPublishing = { id = "com.vanniktech.maven.publish", version.ref = "mavenPublish" }
+kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+android-application = { id = "com.android.application", version.ref = "agp" }
+android-library = { id = "com.android.library", version.ref = "agp" }
+compose-compiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
+
+maven-publish = { id = "com.vanniktech.maven.publish", version.ref = "mavenPublish" }
 dokka = { id = "org.jetbrains.dokka", version.ref = "dokka" }
 
+binary-compatibility-validator = { id = "org.jetbrains.kotlinx.binary-compatibility-validator", version.ref = "binaryCompatValidator" }
+
+# Plugins defined by this project
+devicetypektxproject-android-application = { id = "devicetypektxproject.android.application", version = "unspecified" }
+devicetypektxproject-android-library = { id = "devicetypektxproject.android.library", version = "unspecified" }

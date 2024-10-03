@@ -1,37 +1,47 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 plugins {
-    alias(libs.plugins.androidApplication) apply false
-    alias(libs.plugins.jetbrainsKotlinAndroid) apply false
-    alias(libs.plugins.androidLibrary) apply false
+    alias(libs.plugins.android.application) apply false
 
-    // Maven Publishing Plugin
-    alias(libs.plugins.mavenPublishing) apply false
+    alias(libs.plugins.android.library) apply false
 
-    // Dokka
+    alias(libs.plugins.kotlin.android) apply false
+
+    alias(libs.plugins.maven.publish) apply false
+
     alias(libs.plugins.dokka) apply false
+
+    alias(libs.plugins.compose.compiler) apply false
+
+    alias(libs.plugins.binary.compatibility.validator) apply false
 }
 
 //region Publishing Tasks
-tasks.register("publishToMavenLocal") {
+tasks.register("releaseToMavenLocal") {
+    val moduleName = "devicetypektx"
     doLast {
         exec {
-            commandLine = listOf(
-                "./gradlew",
-                ":devicetypektx:assembleRelease",
-                ":devicetypektx:publishToMavenLocal", "--no-configuration-cache"
-            )
+            commandLine =
+                listOf(
+                    "./gradlew",
+                    ":$moduleName:assembleRelease",
+                    ":$moduleName:publishToMavenLocal",
+                    "--no-configuration-cache",
+                )
         }
     }
 }
 
-tasks.register("publishToMavenCentral") {
+tasks.register("releaseToMavenCentral") {
+    val moduleName = "devicetypektx"
     doLast {
         exec {
-            commandLine = listOf(
-                "./gradlew",
-                ":devicetypektx:assembleRelease",
-                ":devicetypektx:publishAllPublicationsToMavenCentral", "--no-configuration-cache"
-            )
+            commandLine =
+                listOf(
+                    "./gradlew",
+                    ":$moduleName:assembleRelease",
+                    ":$moduleName:publishToMavenCentral",
+                    "--no-configuration-cache",
+                )
         }
     }
 }
@@ -39,11 +49,15 @@ tasks.register("publishToMavenCentral") {
 
 //region Docs
 tasks.register("assembleDocs") {
+    val moduleName = "devicetypektx"
     doLast {
         exec {
-            commandLine = listOf(
-                "./gradlew", ":devicetypektx:dokkaHtml", "--quiet", "--no-configuration-cache"
-            )
+            commandLine =
+                listOf(
+                    "./gradlew",
+                    ":$moduleName:dokkaHtml",
+                    "--no-configuration-cache",
+                )
         }
     }
 }

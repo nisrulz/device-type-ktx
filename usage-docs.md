@@ -6,12 +6,13 @@ DeviceTypeKTX is published to MavenCentral, so you can add it to your project in
 
 ```kotlin
 dependencies {
-    implementation("com.github.nisrulz:devicetypektx:${latest_version}")
+    val deviceTypeKtxVer = "1.0.1"
+    implementation("com.github.nisrulz:devicetypektx:$deviceTypeKtxVer")
     //...other dependencies
 }
 ```
 
-where `latest_version` is the latest version available on MavenCentral : [![Maven Central](https://img.shields.io/maven-central/v/com.github.nisrulz/devicetypektx)](https://central.sonatype.com/search?q=com.github.nisrulz.devicetypektx)
+where `deviceTypeKtxVer` is the latest version available on MavenCentral : [![Maven Central](https://img.shields.io/maven-central/v/com.github.nisrulz/devicetypektx)](https://central.sonatype.com/search?q=com.github.nisrulz.devicetypektx)
 
 [Read API docs here](https://nisrulz.com/device-type-ktx/)
 
