@@ -30,7 +30,7 @@ jobs:
         run: ./gradlew clean assembleRelease --no-configuration-cache
 
       - name: Release to Sonatype MavenCentral
-        if: github.event_name == 'push' # only deploy for pushed commits (not PRs)
+        if: success() && github.event_name == 'push' && github.ref == 'refs/heads/master' # only deploy for pushed commits on master (not PRs)
         run: ./gradlew publishAndReleaseToMavenCentral --no-configuration-cache
         env:
           ORG_GRADLE_PROJECT_mavenCentralUsername: ${{ secrets.MAVEN_CENTRAL_USERNAME }}
