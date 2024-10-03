@@ -27,6 +27,6 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "Device Type KTX Project"
+rootProject.name = "device-type-ktx"
 include(":app")
 include(":devicetypektx")
