@@ -1,7 +1,7 @@
 package com.github.nisrulz.devicetypektxproject.info
 
 object LibraryInfo {
-    const val POM_VERSION = "1.0.2"
+    const val POM_VERSION = "1.0.3"
     const val POM_ARTIFACT_ID = "devicetypektx"
     const val POM_NAME = "Device Type KTX"
     const val POM_DESCRIPTION =
