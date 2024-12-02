@@ -29,18 +29,11 @@ jobs:
         uses: actions/setup-java@v4
         with:
           distribution: "temurin"
-          java-version: "17"
+          java-version: 17
           cache: "gradle"
 
-      - name: Cache Gradle and wrapper
-        uses: actions/cache@v4
-        with:
-          path: |
-            ~/.gradle/caches
-            ~/.gradle/wrapper
-          key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*') }}
-          restore-keys: |
-            ${{ runner.os }}-gradle-
+      - name: Setup Gradle # Will automatically perform wrapper validation on each execution.
+        uses: gradle/actions/setup-gradle@v4
 
       - name: Cache dependencies
         uses: actions/cache@v4
@@ -51,10 +44,7 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-m2
 
-      - name: Change wrapper permissions
-        run: chmod +x ./gradlew
-
-      - name: Run lint
+      - name: Run lint checks
         run: ./gradlew lintRelease
 
       - name: Run unit tests
