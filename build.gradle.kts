@@ -15,50 +15,42 @@ plugins {
     alias(libs.plugins.binary.compatibility.validator) apply false
 }
 
-//region Publishing Tasks
-tasks.register("releaseToMavenLocal") {
-    val moduleName = "devicetypektx"
-    doLast {
-        exec {
-            commandLine =
-                listOf(
-                    "./gradlew",
-                    ":$moduleName:assembleRelease",
-                    ":$moduleName:publishToMavenLocal",
-                    "--no-configuration-cache",
-                )
+
+abstract class GradleExecTask @Inject constructor(
+    private val execOps: ExecOperations
+) : DefaultTask() {
+
+    lateinit var moduleName: String
+    lateinit var gradleTask: String
+
+    @TaskAction
+    fun run() {
+        execOps.exec {
+            commandLine(
+                "./gradlew",
+                ":$moduleName:$gradleTask",
+                "--no-configuration-cache"
+            )
         }
     }
 }
 
-tasks.register("releaseToMavenCentral") {
-    val moduleName = "devicetypektx"
-    doLast {
-        exec {
-            commandLine =
-                listOf(
-                    "./gradlew",
-                    ":$moduleName:assembleRelease",
-                    ":$moduleName:publishToMavenCentral",
-                    "--no-configuration-cache",
-                )
-        }
-    }
+
+//region Publishing Tasks
+tasks.register<GradleExecTask>("releaseToMavenLocal") {
+    moduleName = "devicetypektx"
+    gradleTask = "publishToMavenLocal"
+}
+tasks.register<GradleExecTask>("releaseToMavenCentral") {
+    moduleName = "devicetypektx"
+    gradleTask = "publishToMavenCentral"
 }
 //endregion
 
 //region Docs
-tasks.register("assembleDocs") {
-    val moduleName = "devicetypektx"
-    doLast {
-        exec {
-            commandLine =
-                listOf(
-                    "./gradlew",
-                    ":$moduleName:dokkaHtml",
-                    "--no-configuration-cache",
-                )
-        }
-    }
+tasks.register<GradleExecTask>("assembleDocs") {
+    moduleName = "devicetypektx"
+    gradleTask = "dokkaHtml"
 }
+
 //endregion
