@@ -13,26 +13,25 @@ plugins {
     alias(libs.plugins.binary.compatibility.validator) apply false
 }
 
+abstract class GradleExecTask
+    @Inject
+    constructor(
+        private val execOps: ExecOperations,
+    ) : DefaultTask() {
+        lateinit var moduleName: String
+        lateinit var gradleTask: String
 
-abstract class GradleExecTask @Inject constructor(
-    private val execOps: ExecOperations
-) : DefaultTask() {
-
-    lateinit var moduleName: String
-    lateinit var gradleTask: String
-
-    @TaskAction
-    fun run() {
-        execOps.exec {
-            commandLine(
-                "./gradlew",
-                ":$moduleName:$gradleTask",
-                "--no-configuration-cache"
+        @TaskAction
+        fun run() {
+            execOps.exec {
+                commandLine(
+                    "./gradlew",
+                    ":$moduleName:$gradleTask",
+                    "--no-configuration-cache",
             )
         }
     }
 }
-
 
 //region Publishing Tasks
 tasks.register<GradleExecTask>("releaseToMavenLocal") {

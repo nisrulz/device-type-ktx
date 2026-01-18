@@ -14,8 +14,6 @@ private val Project.catalog
 private val Project.libs: VersionCatalog
     get() = catalog.named("libs")
 
-internal fun Project.catalogLibrary(alias: String): Provider<MinimalExternalModuleDependency> =
-    libs.findLibrary(alias).get()
+internal fun Project.catalogLibrary(alias: String): Provider<MinimalExternalModuleDependency> = libs.findLibrary(alias).get()
 
-internal fun Project.catalogBundle(alias: String): Provider<ExternalModuleDependencyBundle> =
-    libs.findBundle(alias).get()
+internal fun Project.catalogBundle(alias: String): Provider<ExternalModuleDependencyBundle> = libs.findBundle(alias).get()
