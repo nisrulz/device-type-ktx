@@ -48,4 +48,4 @@ jobs:
         run: ./gradlew lintRelease
 
       - name: Run unit tests
-        run: ./gradlew testReleaseUnitTest
+        run: ./gradlew testDebugUnitTest
