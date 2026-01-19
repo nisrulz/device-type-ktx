@@ -2,8 +2,6 @@
 
 ![Banner](img/banner.jpg)
 
-[![API Compatibility Checks](https://github.com/nisrulz/device-type-ktx/actions/workflows/api-check.yml/badge.svg)](https://github.com/nisrulz/device-type-ktx/actions/workflows/api-check.yml)
-
 Android library to provide Kotlin extensions for working with specific device types.
 
 Features:

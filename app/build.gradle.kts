@@ -16,7 +16,6 @@ android {
         includeSourceInformation.set(true)
         featureFlags.set(
             setOf(
-                ComposeFeatureFlag.StrongSkipping.disabled(),
                 ComposeFeatureFlag.OptimizeNonSkippingGroups,
             ),
         )

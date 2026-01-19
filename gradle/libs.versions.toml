@@ -8,7 +8,7 @@ ksp = "2.3.4"
 #endregion
 
 #region ---- Android Core
-agp = "8.13.2"
+agp = "9.0.0"
 androidTools = "32.0.0"
 coreKtx = "1.17.0"
 junit = "4.13.2"
@@ -61,15 +61,12 @@ dokka-android = { group = "org.jetbrains.dokka", name = "android-documentation-p
 dokka-versioning = { group = "org.jetbrains.dokka", name = "versioning-plugin", version.ref = "dokka" }
 
 [plugins]
-kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 android-application = { id = "com.android.application", version.ref = "agp" }
 android-library = { id = "com.android.library", version.ref = "agp" }
 compose-compiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
 
 maven-publish = { id = "com.vanniktech.maven.publish", version.ref = "mavenPublish" }
 dokka = { id = "org.jetbrains.dokka", version.ref = "dokka" }
-
-binary-compatibility-validator = { id = "org.jetbrains.kotlinx.binary-compatibility-validator", version.ref = "binaryCompatValidator" }
 
 # Plugins defined by this project
 devicetypektxproject-android-application = { id = "devicetypektxproject.android.application", version = "unspecified" }
