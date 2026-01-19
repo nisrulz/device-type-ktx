@@ -9,8 +9,6 @@ plugins {
     alias(libs.plugins.dokka) apply false
 
     alias(libs.plugins.compose.compiler) apply false
-
-    alias(libs.plugins.binary.compatibility.validator) apply false
 }
 
 abstract class GradleExecTask
@@ -28,10 +26,10 @@ abstract class GradleExecTask
                     "./gradlew",
                     ":$moduleName:$gradleTask",
                     "--no-configuration-cache",
-            )
+                )
+            }
         }
     }
-}
 
 //region Publishing Tasks
 tasks.register<GradleExecTask>("releaseToMavenLocal") {
@@ -49,5 +47,4 @@ tasks.register<GradleExecTask>("assembleDocs") {
     moduleName = "devicetypektx"
     gradleTask = "dokkaHtml"
 }
-
 //endregion

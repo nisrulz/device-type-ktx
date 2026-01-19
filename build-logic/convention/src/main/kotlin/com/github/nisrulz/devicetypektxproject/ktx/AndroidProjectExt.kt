@@ -12,9 +12,10 @@ import org.jetbrains.kotlin.gradle.dsl.kotlinExtension
 /**
  * Configure Kotlin toolchain for all Android modules.
  */
-private fun Project.configureKotlin(ext: CommonExtension) {
-    kotlinExtension.jvmToolchain(BuildSdkInfo.JVM_TARGET)
-}
+private fun Project.configureKotlin(ext: CommonExtension) =
+    ext.apply {
+        kotlinExtension.jvmToolchain(BuildSdkInfo.JVM_TARGET)
+    }
 
 /**
  * Shared Android configuration for both Application and Library modules.

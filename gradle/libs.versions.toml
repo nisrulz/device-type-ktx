@@ -68,8 +68,6 @@ compose-compiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "
 maven-publish = { id = "com.vanniktech.maven.publish", version.ref = "mavenPublish" }
 dokka = { id = "org.jetbrains.dokka", version.ref = "dokka" }
 
-binary-compatibility-validator = { id = "org.jetbrains.kotlinx.binary-compatibility-validator", version.ref = "binaryCompatValidator" }
-
 # Plugins defined by this project
 devicetypektxproject-android-application = { id = "devicetypektxproject.android.application", version = "unspecified" }
 devicetypektxproject-android-library = { id = "devicetypektxproject.android.library", version = "unspecified" }
