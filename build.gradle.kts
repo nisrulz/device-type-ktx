@@ -45,6 +45,6 @@ tasks.register<GradleExecTask>("releaseToMavenCentral") {
 //region Docs
 tasks.register<GradleExecTask>("assembleDocs") {
     moduleName = "devicetypektx"
-    gradleTask = "dokkaHtml"
+    gradleTask = "dokkaGenerate"
 }
 //endregion
