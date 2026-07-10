@@ -1,5 +1,3 @@
-import org.jetbrains.kotlin.compose.compiler.gradle.ComposeFeatureFlag
-
 plugins {
     alias(libs.plugins.devicetypektxproject.android.application)
 
@@ -14,11 +12,6 @@ android {
 
     composeCompiler {
         includeSourceInformation.set(true)
-        featureFlags.set(
-            setOf(
-                ComposeFeatureFlag.OptimizeNonSkippingGroups,
-            ),
-        )
     }
 }
 
