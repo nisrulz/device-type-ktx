@@ -4,10 +4,12 @@ import android.app.Activity
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.safeDrawingPadding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
@@ -29,14 +31,18 @@ import com.github.nisrulz.devicetypektxproject.ui.theme.DeviceTypeKTXProjectThem
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        enableEdgeToEdge()
         lockToPortraitOrientation(phone = true)
 
         setContent {
             DeviceTypeKTXProjectTheme {
-                // A surface container using the 'background' color from the theme
+                // A surface container using the 'surface' color from the theme.
+                // fillMaxSize lets the surface color show through the status and
+                // navigation bars (edge-to-edge); safeDrawingPadding keeps the
+                // content clear of the system bars.
                 Surface(
                     modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colorScheme.background
+                    color = MaterialTheme.colorScheme.surface
                 ) {
                     val txtToShow = prepareStringToShow()
                     MainScreen(txtToShow)
@@ -73,7 +79,8 @@ private fun Activity.prepareStringToShow(): String {
 fun MainScreen(text: String, modifier: Modifier = Modifier) {
     Column(
         verticalArrangement = Arrangement.Center,
-        horizontalAlignment = Alignment.CenterHorizontally
+        horizontalAlignment = Alignment.CenterHorizontally,
+        modifier = modifier.safeDrawingPadding()
     ) {
         Image(
             modifier = Modifier.size(300.dp),
